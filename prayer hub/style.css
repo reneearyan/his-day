@@ -1,0 +1,121 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fdf8f3;
+  --warm-white:#fefcf8;
+  --beige:#f5ede0;
+  --soft-beige:#ede0d0;
+  --text-dark:#3a2e26;
+  --text-mid:#6b5a4a;
+  --text-light:#9c8070;
+  --blush:#f4c5c5;
+  --rose:#e8a0a0;
+  --mauve:#c9a0b4;
+  --sage:#b5c9a8;
+  --lavender:#c8bde8;
+  --peach:#f5c4a1;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html,body{height:100%;background:var(--cream);color:var(--text-dark);font-family:var(--sans)}
+ 
+/* ─── FLORAL SVG STICKERS ─── */
+.sticker{position:fixed;pointer-events:none;z-index:0;opacity:0.85}
+.sticker.float{animation:floatUp 6s ease-in-out infinite}
+.sticker.float2{animation:floatUp 7s ease-in-out 1s infinite}
+.sticker.float3{animation:floatUp 5s ease-in-out 2s infinite}
+@keyframes floatUp{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+ 
+/* ─── PAGES ─── */
+.page{position:fixed;inset:0;display:flex;flex-direction:column;background:var(--cream);opacity:0;pointer-events:none;transition:opacity 0.7s ease;overflow-y:auto;z-index:1}
+.page.active{opacity:1;pointer-events:all}
+.page.fade-out{opacity:0;pointer-events:none}
+ 
+/* ─── PASSWORD PAGE ─── */
+#page-password{justify-content:center;align-items:center;background:var(--cream)}
+.pw-card{background:var(--warm-white);border-radius:24px;padding:48px 40px;max-width:380px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(180,140,110,0.15),0 2px 8px rgba(180,140,110,0.08);position:relative;z-index:2}
+.pw-card h1{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--text-dark);margin-bottom:6px;font-style:italic}
+.pw-card p{font-size:0.82rem;color:var(--text-light);margin-bottom:28px;letter-spacing:0.03em}
+.pw-input{width:100%;padding:14px 18px;border:1.5px solid var(--soft-beige);border-radius:12px;font-family:var(--sans);font-size:0.95rem;background:var(--cream);color:var(--text-dark);outline:none;transition:border-color 0.3s;text-align:center;letter-spacing:0.1em}
+.pw-input:focus{border-color:var(--rose)}
+.pw-btn{margin-top:14px;width:100%;padding:13px;background:var(--text-dark);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:0.9rem;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s,transform 0.15s}
+.pw-btn:hover{background:var(--text-mid);transform:translateY(-1px)}
+.pw-err{margin-top:12px;font-size:0.82rem;color:var(--rose);min-height:18px;transition:opacity 0.3s}
+.shake{animation:shake 0.4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+ 
+/* ─── NAV ─── */
+nav{position:sticky;top:0;z-index:10;background:rgba(253,248,243,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,160,140,0.12);display:flex;justify-content:center;gap:8px;padding:14px 20px}
+nav button{font-family:var(--sans);font-size:0.82rem;letter-spacing:0.06em;color:var(--text-light);background:none;border:none;cursor:pointer;padding:7px 16px;border-radius:20px;transition:all 0.25s}
+nav button.active,nav button:hover{background:var(--beige);color:var(--text-dark)}
+nav button.active{font-weight:500}
+ 
+/* ─── PAGE 1: HOME ─── */
+.home-wrap{max-width:680px;margin:0 auto;padding:48px 24px 80px}
+.message-card{background:var(--warm-white);border-radius:20px;padding:40px;margin-bottom:40px;box-shadow:0 4px 24px rgba(180,140,110,0.1);transition:box-shadow 0.3s,transform 0.3s;animation:fadeUp 0.8s ease both}
+.message-card:hover{box-shadow:0 8px 32px rgba(180,140,110,0.18);transform:translateY(-2px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card-label{font-size:0.72rem;letter-spacing:0.14em;color:var(--text-light);text-transform:uppercase;margin-bottom:16px}
+.message-card h2{font-family:var(--serif);font-size:1.9rem;font-weight:400;font-style:italic;color:var(--text-dark);line-height:1.45;margin-bottom:18px}
+.message-card p{font-size:0.93rem;color:var(--text-mid);line-height:1.8}
+.gallery-section{animation:fadeUp 0.8s ease 0.2s both}
+.section-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--text-dark);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.gallery-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.photo-card{flex:0 0 220px;height:280px;border-radius:16px;overflow:hidden;cursor:pointer;position:relative;background:var(--beige);box-shadow:0 4px 16px rgba(180,140,110,0.12);transition:transform 0.3s,box-shadow 0.3s}
+.photo-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 10px 30px rgba(180,140,110,0.22)}
+.photo-card img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.photo-placeholder span{font-family:var(--serif);font-size:0.9rem;font-style:italic;color:var(--text-light);text-align:center;padding:0 16px}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(40,30,20,0.88);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;opacity:0.8}
+ 
+/* ─── PAGE 2: PRAYER ─── */
+.prayer-wrap{max-width:680px;margin:0 auto;padding:48px 24px 80px}
+.prayer-input-box{background:var(--warm-white);border-radius:20px;padding:32px;margin-bottom:36px;box-shadow:0 4px 24px rgba(180,140,110,0.1);animation:fadeUp 0.8s ease both}
+.prayer-input-box textarea{width:100%;border:1.5px solid var(--soft-beige);border-radius:12px;padding:16px;font-family:var(--sans);font-size:0.93rem;color:var(--text-dark);background:var(--cream);resize:none;outline:none;min-height:110px;line-height:1.7;transition:border-color 0.3s}
+.prayer-input-box textarea:focus{border-color:var(--mauve)}
+.prayer-input-box textarea::placeholder{color:var(--text-light);font-style:italic}
+.save-btn{margin-top:14px;padding:12px 28px;background:var(--text-dark);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:0.85rem;letter-spacing:0.06em;cursor:pointer;transition:all 0.25s}
+.save-btn:hover{background:var(--text-mid);transform:translateY(-1px)}
+.prayers-col h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;font-style:italic;color:var(--text-dark);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.prayer-card{background:var(--warm-white);border-radius:14px;padding:20px 22px;margin-bottom:12px;box-shadow:0 2px 12px rgba(180,140,110,0.09);animation:fadeUp 0.4s ease both;position:relative;transition:transform 0.3s}
+.prayer-card p{font-size:0.9rem;color:var(--text-dark);line-height:1.75;margin-bottom:10px}
+.prayer-meta{font-size:0.75rem;color:var(--text-light);letter-spacing:0.04em}
+.mark-btn{font-size:0.75rem;color:var(--sage);background:none;border:1px solid var(--sage);border-radius:20px;padding:4px 12px;cursor:pointer;transition:all 0.25s;font-family:var(--sans);margin-top:8px}
+.mark-btn:hover{background:var(--sage);color:#fff}
+.prayer-card.answered{border-left:3px solid var(--sage)}
+.answered-badge{font-size:0.72rem;color:var(--sage);letter-spacing:0.06em;margin-bottom:6px}
+.empty-state{font-size:0.85rem;color:var(--text-light);font-style:italic;padding:20px 0}
+.slide-out{animation:slideOut 0.4s ease forwards}
+@keyframes slideOut{to{opacity:0;transform:translateX(30px)}}
+ 
+/* ─── PAGE 3: OPEN ME ─── */
+.openme-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 60px);padding:40px 24px}
+.envelope-card{background:var(--warm-white);border-radius:24px;padding:48px 40px;max-width:500px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(180,140,110,0.14);cursor:pointer;transition:transform 0.4s,box-shadow 0.4s;animation:fadeUp 0.9s ease both}
+.envelope-card:hover{transform:translateY(-4px);box-shadow:0 14px 50px rgba(180,140,110,0.2)}
+.envelope-card.closed .reveal-content{display:none}
+.envelope-card.open{cursor:default}
+.envelope-card .hint{font-size:0.82rem;color:var(--text-light);letter-spacing:0.06em;margin-bottom:20px}
+.envelope-card h2{font-family:var(--serif);font-size:2rem;font-weight:400;font-style:italic;color:var(--text-dark);line-height:1.4;margin-bottom:8px}
+.click-cue{font-size:0.78rem;color:var(--rose);letter-spacing:0.04em;margin-top:16px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.reveal-content{margin-top:32px;animation:expand 0.6s ease both}
+@keyframes expand{from{opacity:0;transform:scaleY(0.8);transform-origin:top}to{opacity:1;transform:scaleY(1)}}
+.verse-divider{width:40px;height:1px;background:var(--soft-beige);margin:0 auto 24px}
+.verse{font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--text-dark);line-height:1.65;margin-bottom:12px}
+.verse-ref{font-size:0.8rem;color:var(--text-light);letter-spacing:0.06em}
+.note{margin-top:28px;font-size:0.88rem;color:var(--text-mid);line-height:1.8;padding-top:24px;border-top:1px solid var(--soft-beige)}
+ 
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .pw-card{padding:36px 24px}
+  .home-wrap,.prayer-wrap{padding:32px 16px 70px}
+  .message-card{padding:28px 22px}
+  .message-card h2{font-size:1.5rem}
+  .photo-card{flex:0 0 170px;height:220px}
+  .envelope-card{padding:36px 24px}
+  .verse{font-size:1.1rem}
+}
