@@ -91,24 +91,53 @@ nav button.active{font-weight:500}
 .empty-state{font-size:0.85rem;color:var(--text-light);font-style:italic;padding:20px 0}
 .slide-out{animation:slideOut 0.4s ease forwards}
 @keyframes slideOut{to{opacity:0;transform:translateX(30px)}}
+.prayer-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:10px}
+.count-badge{font-family:var(--sans);font-size:0.72rem;font-style:normal;background:var(--beige);color:var(--text-mid);padding:2px 9px;border-radius:20px;font-weight:500;min-width:20px;text-align:center}
+.unmark-btn{font-size:0.75rem;color:var(--text-light);background:none;border:1px solid var(--soft-beige);border-radius:20px;padding:4px 12px;cursor:pointer;transition:all 0.25s;font-family:var(--sans)}
+.unmark-btn:hover{background:var(--beige);color:var(--text-dark)}
  
+/* ─── PRAYER CALENDAR ─── */
+.calendar-box{background:var(--warm-white);border-radius:20px;padding:28px;margin-bottom:28px;box-shadow:0 4px 24px rgba(180,140,110,0.1);animation:fadeUp 0.8s ease both}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.cal-header h4{font-family:var(--serif);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--text-dark)}
+.cal-nav{background:none;border:1px solid var(--soft-beige);border-radius:20px;padding:5px 14px;font-family:var(--sans);font-size:0.8rem;color:var(--text-mid);cursor:pointer;transition:all 0.2s}
+.cal-nav:hover{background:var(--beige);color:var(--text-dark)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-day-label{font-size:0.68rem;letter-spacing:0.06em;color:var(--text-light);text-align:center;padding:4px 0;text-transform:uppercase}
+.cal-day{aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.78rem;color:var(--text-mid);cursor:default;transition:all 0.2s;position:relative;gap:2px}
+.cal-day.has-prayer{cursor:pointer;color:var(--text-dark);font-weight:500}
+.cal-day.has-prayer:hover{background:var(--beige)}
+.cal-day.selected{background:var(--text-dark);color:#fff}
+.cal-day.selected:hover{background:var(--text-dark)}
+.cal-day.today{outline:1.5px solid var(--rose);outline-offset:2px}
+.cal-day.empty{pointer-events:none}
+.cal-dot{width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0}
+.cal-day.selected .cal-dot{background:#fff}
+.cal-filter-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;min-height:28px}
+.cal-filter-label{font-size:0.8rem;color:var(--text-mid);font-style:italic}
+.cal-clear{font-size:0.75rem;background:none;border:1px solid var(--soft-beige);border-radius:20px;padding:4px 12px;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all 0.2s}
+.cal-clear:hover{background:var(--beige);color:var(--text-dark)}
+
+
 /* ─── PAGE 3: OPEN ME ─── */
-.openme-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 60px);padding:40px 24px}
-.envelope-card{background:var(--warm-white);border-radius:24px;padding:48px 40px;max-width:500px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(180,140,110,0.14);cursor:pointer;transition:transform 0.4s,box-shadow 0.4s;animation:fadeUp 0.9s ease both}
+.openme-wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:calc(100vh - 60px);padding:40px 24px 80px}
+.openme-intro{font-family:var(--serif);font-size:0.85rem;font-style:italic;color:var(--text-light);margin-bottom:32px;text-align:center}
+.envelope-card{background:var(--warm-white);border-radius:24px;padding:48px 40px;max-width:500px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(180,140,110,0.14);cursor:pointer;transition:transform 0.4s,box-shadow 0.4s;animation:fadeUp 0.9s ease both;margin-bottom:20px}
 .envelope-card:hover{transform:translateY(-4px);box-shadow:0 14px 50px rgba(180,140,110,0.2)}
-.envelope-card.closed .reveal-content{display:none}
-.envelope-card.open{cursor:default}
+.envelope-card.open{cursor:default;transform:none}
 .envelope-card .hint{font-size:0.82rem;color:var(--text-light);letter-spacing:0.06em;margin-bottom:20px}
 .envelope-card h2{font-family:var(--serif);font-size:2rem;font-weight:400;font-style:italic;color:var(--text-dark);line-height:1.4;margin-bottom:8px}
 .click-cue{font-size:0.78rem;color:var(--rose);letter-spacing:0.04em;margin-top:16px;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-.reveal-content{margin-top:32px;animation:expand 0.6s ease both}
+.reveal-content{display:none;margin-top:32px;animation:expand 0.6s ease both}
+.envelope-card.open .reveal-content{display:block}
+.envelope-card.open .click-cue{display:none}
 @keyframes expand{from{opacity:0;transform:scaleY(0.8);transform-origin:top}to{opacity:1;transform:scaleY(1)}}
 .verse-divider{width:40px;height:1px;background:var(--soft-beige);margin:0 auto 24px}
 .verse{font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--text-dark);line-height:1.65;margin-bottom:12px}
 .verse-ref{font-size:0.8rem;color:var(--text-light);letter-spacing:0.06em}
-.note{margin-top:28px;font-size:0.88rem;color:var(--text-mid);line-height:1.8;padding-top:24px;border-top:1px solid var(--soft-beige)}
- 
+.note{margin-top:28px;font-size:0.88rem;color:var(--text-mid);line-height:1.8;padding-top:24px;border-top:1px solid var(--soft-beige);text-align:left}
+
 /* ─── RESPONSIVE ─── */
 @media(max-width:600px){
   .pw-card{padding:36px 24px}
