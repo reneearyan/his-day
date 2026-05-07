@@ -124,12 +124,12 @@ function savePrayer() {
     answered: false
   };
 
-  db.ref("test-prayers/" + prayer.id).set(prayer);
+  db.ref("prayers/" + prayer.id).set(prayer);
   document.getElementById('prayer-text').value = '';
 }
 
 function renderPrayers() {
-  db.ref("test-prayers").on("value", snapshot => {
+  db.ref("prayers").on("value", snapshot => {
     const data = snapshot.val() || {};
     const allPrayers = Object.values(data).sort((a, b) => b.id - a.id);
 
@@ -189,13 +189,13 @@ function renderPrayers() {
 function markAnswered(id) {
   const card = document.getElementById('pc-' + id);
   card.classList.add('slide-out');
-  setTimeout(() => { db.ref("test-prayers/" + id + "/answered").set(true); }, 380);
+  setTimeout(() => { db.ref("prayers/" + id + "/answered").set(true); }, 380);
 }
 
 function unmarkAnswered(id) {
   const card = document.getElementById('pc-' + id);
   card.classList.add('slide-out');
-  setTimeout(() => { db.ref("test-prayers/" + id + "/answered").set(false); }, 380);
+  setTimeout(() => { db.ref("prayers/" + id + "/answered").set(false); }, 380);
 }
  
 // ─── LIGHTBOX ───
@@ -216,7 +216,7 @@ const openMeCards = [
     feeling: "when you feel tired",
     verse: "\u201cThen Jesus said, \u2018Come to me, all of you who are weary and carry heavy burdens, and I will give you rest.\u2019\u201d",
     ref: "\u2014 Matthew 11:28 (NLT)",
-    note: "Aaron, whenever the weight of the world sits heavy on your shoulders, come back to this verse. You don\u2019t have to carry it alone \u2014 you were never meant to. Rest is not weakness; rest is trust. You are so loved in your tiredness and in your strength, in every season. I\u2019m praying for you always. \uD83E\uDD0D"
+    note: "Aaron, whenever the weight of the world sits heavy on your shoulders, come back to this verse. You don\u2019t have to carry it alone \u2014 you were never meant to. Rest is not weakness; rest is trust. You are so loved in your tiredness and in your strength, in every season.\uD83E\uDD0D"
   },
   {
     id: "anxious",
